@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 40px;
+      background: #fff;
+      color: #111;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+    p {
+      margin-bottom: 12px;
+      max-width: 400px;
+    }
+    .mono {
+      font-family: monospace;
+      letter-spacing: 0.1em;
+    }
+    .upper {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="mirror-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:1000;"></canvas>
+
+  <main id="root">
+    <h1 id="headline">Practicality is the most beautiful design.</h1>
+    <p id="body-text">I'm a frontend developer with a background in low-level electronics and applied mathematics.</p>
+    <p class="mono" id="mono-text">pery.dev</p>
+    <p class="upper" id="upper-text">two slice studio</p>
+  </main>
+
+  <script type="module">
+    import { CanvasMirror } from '../../src/core.ts'
+
+    const canvas = document.getElementById('mirror-canvas')
+    const root   = document.getElementById('root')
+
+    CanvasMirror.resize(canvas)
+    window.addEventListener('resize', () => CanvasMirror.resize(canvas))
+
+    const mirror = new CanvasMirror({ canvas, root })
+    await mirror.draw()
+
+    // Signal to Playwright that drawing is complete
+    window.__mirrorReady = true
+    window.__mirror = mirror
+  </script>
+</body>
+</html>
