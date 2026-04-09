@@ -17,6 +17,14 @@
     "./react": {
       "import": "./dist/react.js",
       "types": "./dist/react.d.ts"
+    },
+    "./svelte": {
+      "import": "./dist/svelte.js",
+      "types": "./dist/svelte.d.ts"
+    },
+    "./angular": {
+      "import": "./dist/angular.js",
+      "types": "./dist/angular.d.ts"
     }
   },
   "files": [
@@ -40,11 +48,15 @@
   "license": "MIT",
   "peerDependencies": {
     "react": ">=18",
-    "vue": ">=3"
+    "vue": ">=3",
+    "svelte": ">=4",
+    "@angular/core": ">=17"
   },
   "peerDependenciesMeta": {
     "react": { "optional": true },
-    "vue": { "optional": true }
+    "vue": { "optional": true },
+    "svelte": { "optional": true },
+    "@angular/core": { "optional": true }
   },
   "devDependencies": {
     "typescript": "^5.0.0"

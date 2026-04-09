@@ -58,6 +58,60 @@ onMounted(async () => {
 onUnmounted(() => mirror.clear())
 ```
 
+### Svelte
+
+```svelte
+<script lang="ts">
+  import { onMount, onDestroy } from 'svelte'
+  import { createCanvasMirror } from 'canvas-text-mirror/svelte'
+
+  let canvasEl: HTMLCanvasElement
+  let rootEl: HTMLElement
+
+  const mirror = createCanvasMirror(() => canvasEl, () => rootEl)
+
+  onMount(async () => { await mirror.draw() })
+  onDestroy(() => mirror.clear())
+</script>
+
+<canvas bind:this={canvasEl} class="mirror-canvas" />
+<main bind:this={rootEl}>
+  <slot />
+</main>
+```
+
+### Angular
+
+```ts
+import { CanvasMirrorService } from 'canvas-text-mirror/angular'
+
+@Component({
+  templateUrl: './my.component.html',
+  providers: [CanvasMirrorService],  // scoped per component
+})
+export class MyComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>
+  @ViewChild('root')   rootRef!:   ElementRef<HTMLElement>
+
+  constructor(private mirror: CanvasMirrorService) {}
+
+  async ngAfterViewInit() {
+    this.mirror.init(this.canvasRef, this.rootRef)
+    await this.mirror.draw()
+  }
+
+  ngOnDestroy() { this.mirror.destroy() }
+}
+```
+
+```html
+<!-- my.component.html -->
+<canvas #canvas class="mirror-canvas"></canvas>
+<main #root>
+  <ng-content />
+</main>
+```
+
 ### React
 
 ```ts
