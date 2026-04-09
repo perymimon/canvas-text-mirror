@@ -1,0 +1,52 @@
+{
+  "name": "canvas-text-mirror",
+  "version": "0.1.0",
+  "description": "Pixel-perfect DOM text → Canvas 2D mirror. Clone any HTML subtree onto a canvas with exact fonts, colors, line breaks, and letter-spacing.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./vue": {
+      "import": "./dist/vue.js",
+      "types": "./dist/vue.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react.js",
+      "types": "./dist/react.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "canvas",
+    "text",
+    "dom",
+    "mirror",
+    "pixel-perfect",
+    "typography",
+    "particles",
+    "effects"
+  ],
+  "author": "Pery Mimon",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18",
+    "vue": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "vue": { "optional": true }
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
