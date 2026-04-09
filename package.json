@@ -32,7 +32,10 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [
     "canvas",
@@ -47,18 +50,29 @@
   "author": "Pery Mimon",
   "license": "MIT",
   "peerDependencies": {
+    "@angular/core": ">=17",
     "react": ">=18",
-    "vue": ">=3",
     "svelte": ">=4",
-    "@angular/core": ">=17"
+    "vue": ">=3"
   },
   "peerDependenciesMeta": {
-    "react": { "optional": true },
-    "vue": { "optional": true },
-    "svelte": { "optional": true },
-    "@angular/core": { "optional": true }
+    "react": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    },
+    "@angular/core": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "@vitest/coverage-v8": "^4.1.4",
+    "jsdom": "^29.0.2",
+    "typescript": "^5.0.0",
+    "vitest": "^4.1.4"
   }
 }
